@@ -3,6 +3,7 @@ import React from 'react';
 import leaflet from 'leaflet';
 import { URL_MARKER } from './const';
 import useMap from '../../hooks/use-map';
+import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
     selectedId: number | null;
