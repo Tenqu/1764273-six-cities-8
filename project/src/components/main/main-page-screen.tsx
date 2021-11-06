@@ -1,6 +1,8 @@
 import { Offer } from '../../types/offer';
 import Logo from '../logo/logo';
 import CardList from '../offer-card/card-list';
+import React from 'react';
+import Map from '../map/map';
 
 type PageMainProps = {
     offerCount: number;
@@ -8,6 +10,8 @@ type PageMainProps = {
 }
 
 function PageMainScreen({offerCount, offers}: PageMainProps): JSX.Element {
+  const [selectedCard] = React.useState<Offer | null>(null);
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -99,7 +103,11 @@ function PageMainScreen({offerCount, offers}: PageMainProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                city={offers[0].city}
+                points={offers}
+                selectedId={selectedCard && selectedCard.id}
+              />
             </div>
           </div>
         </div>
