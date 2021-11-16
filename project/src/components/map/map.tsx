@@ -4,8 +4,10 @@ import leaflet from 'leaflet';
 import { URL_MARKER } from './const';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
+import './map.css';
 
 type MapProps = {
+    mapType: string;
     selectedId: number | null;
     city: City;
     points: Offer[];
@@ -24,7 +26,7 @@ const selectedCustomIcon = leaflet.icon({
 });
 
 export default function Map(props: MapProps): JSX.Element {
-  const { city, points, selectedId } = props;
+  const { mapType, city, points, selectedId } = props;
 
   const mapRef = React.useRef(null);
   const map = useMap(mapRef, city);
@@ -49,6 +51,6 @@ export default function Map(props: MapProps): JSX.Element {
   }, [map, points, selectedId]);
 
   return (
-    <section className="cities__map map" ref={mapRef}></section>
+    <section className={`${mapType} map`} ref={mapRef} />
   );
 }

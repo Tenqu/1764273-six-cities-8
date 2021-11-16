@@ -4,9 +4,10 @@ import CardScreen from '../offer-card/card-screen';
 
 type CardListProps = {
     offers: Offer[]
+    placeType: string;
   }
 
-function CardList({offers}: CardListProps): JSX.Element {
+function CardList({offers, placeType}: CardListProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeCard, setActiveCard] = useState({});
 
@@ -19,7 +20,7 @@ function CardList({offers}: CardListProps): JSX.Element {
 
   return (
     <>
-      {offers.map((offer) => <CardScreen key={offer.id} offer={offer} handleMouseEnter={() => handleMouseEnter(offer)} handleMouseLeave={() => handleMouseLeave()}/>)}
+      {offers.map((offer) => <CardScreen key={offer.id} offer={offer} placeType={placeType} handleMouseEnter={() => handleMouseEnter(offer)} handleMouseLeave={() => handleMouseLeave()}/>)}
     </>
   );
 }
