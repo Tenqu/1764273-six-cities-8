@@ -3,6 +3,7 @@ import Logo from '../logo/logo';
 import CardList from '../offer-card/card-list';
 import React from 'react';
 import Map from '../map/map';
+import { PlaceType } from '../../const';
 
 type PageMainProps = {
     offerCount: number;
@@ -99,11 +100,12 @@ function PageMainScreen({offerCount, offers}: PageMainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <CardList offers={offers}/>
+                <CardList offers={offers} placeType={PlaceType.City}/>
               </div>
             </section>
             <div className="cities__right-section">
               <Map
+                mapType={'cities__map'}
                 city={offers[0].city}
                 points={offers}
                 selectedId={selectedCard && selectedCard.id}

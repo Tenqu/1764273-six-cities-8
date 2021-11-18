@@ -35,7 +35,7 @@ function App({offerCount, offers, reviews}: AppScreenProps): JSX.Element {
         >
         </PrivateRoute>
         <Route exact path={AppRoute.Room}>
-          <RoomScreen offer={offers[0]} reviews={reviews} />
+          <RoomScreen offer={offers[0]} reviews={reviews} offers={offers}/>
         </Route>
         <Route>
           <Error404Screen />

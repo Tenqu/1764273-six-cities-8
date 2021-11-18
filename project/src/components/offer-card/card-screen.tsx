@@ -1,20 +1,24 @@
 import {Link} from 'react-router-dom';
+import { PlaceType } from '../../const';
 import { Offer } from '../../types/offer';
 import { getRating } from '../../utils/utils';
 
 /* eslint-disable jsx-a11y/img-redundant-alt */
 type CardProps = {
   offer: Offer;
+  placeType: string;
   handleMouseEnter?: () => void;
   handleMouseLeave?: () => void;
 };
 
 function CardScreen(props: CardProps): JSX.Element {
-  const {offer, handleMouseEnter, handleMouseLeave} = props;
+  const {offer, placeType, handleMouseEnter, handleMouseLeave} = props;
   const {id, price, type, title, previewImage, isPremium, rating, isFavorite} = offer;
+  const isCityPlace = placeType === PlaceType.City;
+  const isNearPlace = placeType === PlaceType.Near;
 
   return (
-    <article id={`${id}`} className="cities__place-card place-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <article id={`${id}`} className={`place-card ${isCityPlace ? 'cities__place-card' : ''} ${isNearPlace ? 'near-places__card' : ''}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
